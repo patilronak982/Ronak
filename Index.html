@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Prime Restaurant & Banquet & Rooms | Pure Veg - Surat</title>
+    <style>
+        :root {
+            --maroon: #7A001E;
+            --maroon-dark: #500014;
+            --gold: #D4AF37;
+            --gold-light: #FFF8E7;
+            --cream: #FAF6EE;
+            --dark-text: #222222;
+            --gray-text: #555555;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--dark-text);
+            line-height: 1.6;
+            padding-bottom: 60px; /* Space for mobile sticky action bar */
+        }
+
+        /* Top Sticky Header */
+        header {
+            background-color: var(--maroon-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .veg-symbol {
+            width: 20px;
+            height: 20px;
+            border: 2px solid green;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 3px;
+        }
+
+        .veg-dot {
+            width: 10px;
+            height: 10px;
+            background-color: green;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            color: var(--gold);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            line-height: 1.2;
+        }
+
+        .brand-name span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--white);
+            font-weight: normal;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            nav { display: none; } /* Hide full menu links on small mobile screens */
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(80, 0, 20, 0.75), rgba(0, 0, 0, 0.85)), 
+                        url('https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--white);
+        }
+
+        .hero-tag {
+            background-color: var(--gold);
+            color: var(--maroon-dark);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 0.8rem;
+        }
+
+        .rating-badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--gold);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.4rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--maroon-dark);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--gold);
+            color: var(--white);
+            background: transparent;
+        }
+
+        /* Container & Sections */
+        .section {
+            padding: 3rem 1rem;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--maroon);
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 0.5rem auto 1.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-text);
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--maroon);
+            text-align: center;
+        }
+
+        .highlights {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+
+        .badge-box {
+            background: var(--gold-light);
+            border: 1px solid var(--gold);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--maroon-dark);
+            font-weight: bold;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .menu-category {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--gold);
+        }
+
+        .menu-category h3 {
+            color: var(--maroon);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .item-price {
+            font-weight: bold;
+            color: var(--maroon);
+        }
+
+        .menu-note {
+            background-color: var(--gold-light);
+            border: 1px dashed var(--gold);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--maroon-dark);
+            text-align: center;
+        }
+
+        /* Rooms & Banquet */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            border: 1px solid #eee;
+        }
+
+        .service-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-price {
+            font-size: 1.2rem;
+            color: var(--maroon);
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        /* Timings Section */
+        .timing-box {
+            background: var(--maroon-dark);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--gold);
+        }
+
+        .timing-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 1.5rem 0;
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border-left: 3px solid var(--maroon);
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--gray-text);
+        }
+
+        /* Contact & Location */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-info, .contact-form {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Mobile Sticky Actions */
+        .mobile-sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--maroon-dark);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.6rem 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            border-top: 1px solid var(--gold);
+        }
+
+        .sticky-btn {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0.3rem 1rem;
+            border-radius: 4px;
+        }
+
+        .sticky-btn-call { background-color: var(--gold); color: var(--maroon-dark); }
+        .sticky-btn-wa { background-color: #25D366; color: var(--white); }
+
+        footer {
+            background: #151515;
+            color: #aaa;
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        footer a { color: var(--gold); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="veg-symbol"><div class="veg-dot"></div></div>
+                <a href="#" class="brand-name">
+                    THE PRIME RESTAURANT
+                    <span>Pure Veg • Banquet • Rooms</span>
+                </a>
+            </div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#menu">Menu</a>
+                <a href="#stay-banquet">Banquet & Rooms</a>
+                <a href="#timings">Timings</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-tag">Pure Veg Restaurant • Surat</div>
+        <h1>THE PRIME RESTAURANT & BANQUET & ROOMS</h1>
+        <div class="subtitle">prime restaurant, taste of india</div>
+        <p style="margin-bottom: 1rem; font-size: 1.1rem;">Pure Veg Food at Affordable Cost</p>
+
+        <div class="rating-badge">
+            ⭐ <strong>4.1 ★</strong> (47 Google Reviews)
+        </div>
+
+        <div class="hero-buttons">
+            <a href="#menu" class="btn btn-gold">View Menu</a>
+            <a href="#contact" class="btn btn-outline">Book a Table</a>
+            <a href="tel:09638440110" class="btn btn-gold">Call Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-card">
+            <p>Welcome to <strong>The Prime Restaurant</strong>, Surat's trusted destination for authentic pure vegetarian Indian cuisine. Located in Pandesara, Udhana, we combine rich traditional flavors with warm hospitality. Whether you're looking for a satisfying daily thali, hosting a grand function in our banquet hall, or booking a comfortable AC room, we offer top quality at affordable prices.</p>
+            
+            <div class="highlights">
+                <div class="badge-box">🌱 100% Pure Vegetarian</div>
+                <div class="badge-box">🎉 Highly Recommended Banquet Hall</div>
+                <div class="badge-box">🏨 3-Star AC Guest Rooms</div>
+                <div class="badge-box">🥗 Jain & Vegan Options Available</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section">
+        <h2 class="section-title">Our Menu</h2>
+        <p class="section-subtitle">Freshly prepared pure vegetarian delicacies</p>
+
+        <div class="menu-grid">
+            <!-- Thali -->
+            <div class="menu-category">
+                <h3>Punjabi Thalis <span style="font-size: 0.8rem; font-weight: normal;">(Limited)</span></h3>
+                <div class="menu-item">
+                    <span>Sadi Punjabi Thali</span>
+                    <span class="item-price">₹110</span>
+                </div>
+                <div class="menu-item">
+                    <span>Special Punjabi Thali</span>
+                    <span class="item-price">₹130</span>
+                </div>
+            </div>
+
+            <!-- Paneer Dishes -->
+            <div class="menu-category">
+                <h3>Paneer Specialities</h3>
+                <div class="menu-item">
+                    <span>Paneer Dishes (Selection)</span>
+                    <span class="item-price">₹140 – ₹360</span>
+                </div>
+                <div class="menu-item">
+                    <span>Paneer Tikka / Butter Masala</span>
+                    <span class="item-price">Chef's Choice</span>
+                </div>
+            </div>
+
+            <!-- Veg Main Course -->
+            <div class="menu-category">
+                <h3>Vegetable Dishes</h3>
+                <div class="menu-item">
+                    <span>Mix Veg / Season Special</span>
+                    <span class="item-price">₹75 – ₹145</span>
+                </div>
+            </div>
+
+            <!-- Rice & Biryani -->
+            <div class="menu-category">
+                <h3>Rice, Pulao & Biryani</h3>
+                <div class="menu-item">
+                    <span>Steamed Rice / Veg Pulao / Biryani</span>
+                    <span class="item-price">₹55 – ₹120</span>
+                </div>
+            </div>
+
+            <!-- Chinese -->
+            <div class="menu-category">
+                <h3>Chinese Specialties</h3>
+                <div class="menu-item">
+                    <span>Chinese Fried Rice / Noodles</span>
+                    <span class="item-price">₹85 – ₹130</span>
+                </div>
+            </div>
+
+            <!-- Salads & Sides -->
+            <div class="menu-category">
+                <h3>Salad & Papad</h3>
+                <div class="menu-item">
+                    <span>Roasted / Fried Papad & Salads</span>
+                    <span class="item-price">₹12 – ₹45</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-note">
+            📌 <strong>Important Note:</strong> Jain preparation is available on request (+₹5 to ₹10 extra). <br>
+            <em>Orders cannot be cancelled once placed. All prices are in Indian Rupees (₹).</em>
+        </div>
+    </section>
+
+    <!-- Rooms & Banquet Section -->
+    <section id="stay-banquet" class="section">
+        <h2 class="section-title">Rooms & Banquet Hall</h2>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="service-content">
+                    <h3>3-Star AC Guest Rooms</h3>
+                    <p>Clean, comfortable AC rooms for overnight stay with modern amenities and 24/7 service.</p>
+                    <div class="service-price">Starting ₹1,412 / night <span style="font-size: 0.8rem; font-weight: normal; color: #666;">(2 Guests)</span></div>
+                    <a href="https://www.makemytrip.com/" target="_blank" class="btn btn-gold" style="width: 100%; text-align: center; margin-top: 0.5rem;">Book via MakeMyTrip</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="service-content">
+                    <h3>Banquet Hall for Events</h3>
+                    <p>Locally recommended hall perfect for birthday parties, family gatherings, ring ceremonies, and corporate functions.</p>
+
+                    <a href="#contact" class="btn btn-gold" style="width: 100%; text-align: center; margin-top: 1.5rem;">Inquire for Event Booking</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timings -->
+    <section id="timings" class="section">
+        <div class="timing-box">
+            <h2>Opening Hours & Peak Times</h2>
+            <div class="timing-grid">
+                <div>
+                    <h3>☀️ Lunch</h3>
+                    <p>12:00 PM – 3:00 PM</p>
+                </div>
+                <div>
+                    <h3>🌙 Dinner</h3>
+                    <p>6:00 PM – 12:00 AM</p>
+                </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--gold);">⚡ Busiest hours: 7:30 PM – 9:00 PM (Dinner Rush)</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.9;">Typical visit duration: 20 mins to 1 hour | Peak wait time: up to 15 mins</p>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section">
+        <h2 class="section-title">Customer Reviews</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div>⭐⭐⭐⭐⭐</div>
+                <p>"Best Punjabi Thali in Udhana area at very reasonable rate. Clean pure veg food."</p>
+                <div class="reviewer-name">- Local Guide (Google Review)</div>
+            </div>
+            <div class="review-card">
+                <div>⭐⭐⭐⭐⭐</div>
+                <p>"Booked the banquet hall for small family event. Excellent service and food quality."</p>
+                <div class="reviewer-name">- Rajesh M.</div>
+            </div>
+            <div cla
