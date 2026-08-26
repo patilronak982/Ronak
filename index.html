@@ -102,7 +102,7 @@
         }
 
         @media (max-width: 768px) {
-            nav { display: none; } /* Hide full menu links on small mobile screens */
+            nav { display: none; }
         }
 
         /* Hero Section */
@@ -186,6 +186,43 @@
             border: 2px solid var(--gold);
             color: var(--white);
             background: transparent;
+        }
+
+        /* Modal Popup Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-card {
+            background: var(--white);
+            border-radius: 12px;
+            max-width: 450px;
+            width: 100%;
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border-top: 5px solid var(--gold);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-text);
+        }
+
+        .form-group { margin-bottom: 1rem; text-align: left; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: bold; margin-bottom: 0.3rem; color: var(--maroon-dark); }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 0.65rem; border: 1px solid #ccc; border-radius: 6px; font-size: 0.95rem;
         }
 
         /* Container & Sections */
@@ -369,28 +406,6 @@
             color: var(--gray-text);
         }
 
-        /* Contact & Location */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .contact-info, .contact-form {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        form input, form textarea {
-            width: 100%;
-            padding: 0.7rem;
-            margin-bottom: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
         /* Mobile Sticky Actions */
         .mobile-sticky-bar {
             position: fixed;
@@ -467,10 +482,53 @@
 
         <div class="hero-buttons">
             <a href="#menu" class="btn btn-gold">View Menu</a>
-            <a href="#contact" class="btn btn-outline">Book a Table</a>
-            <a href="tel:9924756811" class="btn btn-gold">Call Now</a>
+            <button onclick="openBookingModal()" class="btn btn-outline">Book a Table</button>
+            <a href="tel:9512923318" class="btn btn-gold">Call Now</a>
         </div>
     </section>
+
+    <!-- Table Booking Modal Popup -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-card">
+            <span class="close-modal" onclick="closeBookingModal()">&times;</span>
+            <h3 style="color: var(--maroon); margin-bottom: 1rem; text-align: center;">Book a Table</h3>
+            
+            <form id="sheetBookingForm">
+                <div class="form-group">
+                    <label>Your Name *</label>
+                    <input type="text" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" name="phone" required placeholder="Enter 10-digit mobile number">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Date *</label>
+                        <input type="date" name="date" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>Time *</label>
+                        <input type="time" name="time" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Number of Guests *</label>
+                    <select name="guests" required>
+                        <option value="1 Guest">1 Person</option>
+                        <option value="2 Guests" selected>2 Persons</option>
+                        <option value="4 Guests">4 Persons</option>
+                        <option value="6+ Guests">6+ Persons (Family/Group)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Special Notes / Requests</label>
+                    <textarea name="message" rows="2" placeholder="e.g. Jain food preferences or birthday decoration"></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%;">Send via WhatsApp</button>
+            </form>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="section">
@@ -493,7 +551,6 @@
         <p class="section-subtitle">Freshly prepared pure vegetarian delicacies</p>
 
         <div class="menu-grid">
-            <!-- Thali -->
             <div class="menu-category">
                 <h3>Punjabi Thalis <span style="font-size: 0.8rem; font-weight: normal;">(Limited)</span></h3>
                 <div class="menu-item">
@@ -506,7 +563,6 @@
                 </div>
             </div>
 
-            <!-- Paneer Dishes -->
             <div class="menu-category">
                 <h3>Paneer Specialities</h3>
                 <div class="menu-item">
@@ -519,7 +575,6 @@
                 </div>
             </div>
 
-            <!-- Veg Main Course -->
             <div class="menu-category">
                 <h3>Vegetable Dishes</h3>
                 <div class="menu-item">
@@ -528,7 +583,6 @@
                 </div>
             </div>
 
-            <!-- Rice & Biryani -->
             <div class="menu-category">
                 <h3>Rice, Pulao & Biryani</h3>
                 <div class="menu-item">
@@ -537,7 +591,6 @@
                 </div>
             </div>
 
-            <!-- Chinese -->
             <div class="menu-category">
                 <h3>Chinese Specialties</h3>
                 <div class="menu-item">
@@ -546,7 +599,6 @@
                 </div>
             </div>
 
-            <!-- Salads & Sides -->
             <div class="menu-category">
                 <h3>Salad & Papad</h3>
                 <div class="menu-item">
@@ -571,55 +623,4 @@
                 <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=600&q=80');"></div>
                 <div class="service-content">
                     <h3>3-Star AC Guest Rooms</h3>
-                    <p>Clean, comfortable AC rooms for overnight stay with modern amenities and 24/7 service.</p>
-                    <div class="service-price">Starting ₹1,412 / night <span style="font-size: 0.8rem; font-weight: normal; color: #666;">(2 Guests)</span></div>
-                    <a href="https://www.makemytrip.com/" target="_blank" class="btn btn-gold" style="width: 100%; text-align: center; margin-top: 0.5rem;">Book via MakeMyTrip</a>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80');"></div>
-                <div class="service-content">
-                    <h3>Banquet Hall for Events</h3>
-                    <p>Locally recommended hall perfect for birthday parties, family gatherings, ring ceremonies, and corporate functions.</p>
-
-                    <a href="#contact" class="btn btn-gold" style="width: 100%; text-align: center; margin-top: 1.5rem;">Inquire for Event Booking</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Timings -->
-    <section id="timings" class="section">
-        <div class="timing-box">
-            <h2>Opening Hours & Peak Times</h2>
-            <div class="timing-grid">
-                <div>
-                    <h3>☀️ Lunch</h3>
-                    <p>12:00 PM – 3:00 PM</p>
-                </div>
-                <div>
-                    <h3>🌙 Dinner</h3>
-                    <p>6:00 PM – 12:00 AM</p>
-                </div>
-            </div>
-            <p style="font-size: 0.9rem; color: var(--gold);">⚡ Busiest hours: 7:30 PM – 9:00 PM (Dinner Rush)</p>
-            <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.9;">Typical visit duration: 20 mins to 1 hour | Peak wait time: up to 15 mins</p>
-        </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="section">
-        <h2 class="section-title">Customer Reviews</h2>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div>⭐⭐⭐⭐⭐</div>
-                <p>"Best Punjabi Thali in Udhana area at very reasonable rate. Clean pure veg food."</p>
-                <div class="reviewer-name">- Local Guide (Google Review)</div>
-            </div>
-            <div class="review-card">
-                <div>⭐⭐⭐⭐⭐</div>
-                <p>"Booked the banquet hall for small family event. Excellent service and food quality."</p>
-                <div class="reviewer-name">- Rajesh M.</div>
-            </div>
-            <div cla
+                    <p>Clean, comfortable AC rooms for o
