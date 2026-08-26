@@ -623,4 +623,109 @@
                 <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=600&q=80');"></div>
                 <div class="service-content">
                     <h3>3-Star AC Guest Rooms</h3>
-                    <p>Clean, comfortable AC rooms for o
+                    <p>Clean, comfortable AC rooms for overnight stay with modern amenities and 24/7 service.</p>
+                    <div class="service-price">Starting ₹1,412 / night <span style="font-size: 0.8rem; font-weight: normal; color: #666;">(2 Guests)</span></div>
+                    <a href="https://www.makemytrip.com/" target="_blank" class="btn btn-gold" style="width: 100%; text-align: center; margin-top: 0.5rem;">Book via MakeMyTrip</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="service-content">
+                    <h3>Banquet Hall for Events</h3>
+                    <p>Locally recommended hall perfect for birthday parties, family gatherings, ring ceremonies, and corporate functions.</p>
+                    <button onclick="openBookingModal()" class="btn btn-gold" style="width: 100%; text-align: center; margin-top: 1.5rem;">Inquire for Event Booking</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timings -->
+    <section id="timings" class="section">
+        <div class="timing-box">
+            <h2>Opening Hours & Peak Times</h2>
+            <div class="timing-grid">
+                <div>
+                    <h3>☀️ Lunch</h3>
+                    <p>12:00 PM – 3:00 PM</p>
+                </div>
+                <div>
+                    <h3>🌙 Dinner</h3>
+                    <p>6:00 PM – 12:00 AM</p>
+                </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--gold);">⚡ Busiest hours: 7:30 PM – 9:00 PM (Dinner Rush)</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.9;">Typical visit duration: 20 mins to 1 hour | Peak wait time: up to 15 mins</p>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section">
+        <h2 class="section-title">Customer Reviews</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div>⭐⭐⭐⭐⭐</div>
+                <p>"Best Punjabi Thali in Udhana area at very reasonable rate. Clean pure veg food."</p>
+                <div class="reviewer-name">- Local Guide (Google Review)</div>
+            </div>
+            <div class="review-card">
+                <div>⭐⭐⭐⭐⭐</div>
+                <p>"Booked the banquet hall for small family event. Excellent service and food quality."</p>
+                <div class="reviewer-name">- Rajesh M.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Location & Contact</h2>
+        <div class="about-card">
+            <p><strong>Address:</strong> 331, Near Piyush Point, Shiv Nagar, Pandesara, Udhana, Surat, Gujarat 394221</p>
+            <p style="margin-top: 0.5rem;"><strong>Phone:</strong> <a href="tel:9512923318" style="color: var(--maroon); text-decoration: none; font-weight: bold;">+91 95129 23318</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 The Prime Restaurant & Banquet & Rooms. All rights reserved.</p>
+    </footer>
+
+    <!-- Mobile Sticky Bar -->
+    <div class="mobile-sticky-bar">
+        <a href="tel:9512923318" class="sticky-btn sticky-btn-call">📞 Call Now</a>
+        <a href="https://wa.me/919512923318" class="sticky-btn sticky-btn-wa">💬 WhatsApp</a>
+    </div>
+
+    <script>
+        function openBookingModal() {
+            document.getElementById('bookingModal').style.display = 'flex';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        document.getElementById('sheetBookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = this.name.value;
+            const phone = this.phone.value;
+            const date = this.date.value;
+            const time = this.time.value;
+            const guests = this.guests.value;
+            const message = this.message.value;
+
+            const text = `*New Table Booking Request*%0A%0A` +
+                         `👤 *Name:* ${encodeURIComponent(name)}%0A` +
+                         `📞 *Phone:* ${encodeURIComponent(phone)}%0A` +
+                         `📅 *Date:* ${encodeURIComponent(date)}%0A` +
+                         `⏰ *Time:* ${encodeURIComponent(time)}%0A` +
+                         `👥 *Guests:* ${encodeURIComponent(guests)}%0A` +
+                         `📝 *Note:* ${encodeURIComponent(message)}`;
+
+            window.open(`https://wa.me/919512923318?text=${text}`, '_blank');
+            closeBookingModal();
+            this.reset();
+        });
+    </script>
+</body>
+</html>
